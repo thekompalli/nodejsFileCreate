@@ -1,6 +1,9 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const path = require('path');
+
+const savedDir = path.join(__dirname, 'folder');
 
 app.get('', (req, res) => {
     res.send('Hello World!')
@@ -20,7 +23,7 @@ app.get('/file', (req, res) => {
 
 app.get('/ret', (req, res) => {
     let lst = []
-    fs.readdir('C:/Users/sigma/Desktop/task/folder', (err,data) => {
+    fs.readdir(savedDir, (err,data) => {
       data.forEach((i) => {
         lst.push(i)
       })  
